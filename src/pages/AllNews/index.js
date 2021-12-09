@@ -1,12 +1,12 @@
 import React from 'react';
-import {Header} from "../../components/Header";
-import {HeaderSimpleFaq} from "../../components/HeaderSimpleFaq";
+import {Header} from "../../components/Home/Header";
+import {HeaderSimpleFaq} from "../../components/Home/Header/HeaderSimpleFaq";
 
-import {Footer} from "../../components/Footer";
-import {ContAllNews} from "../../components/ContAllNews";
-import {MenuRight} from "../../components/MenuRight";
-import {Timer} from "../../components/Timer";
-import {Message} from "../../components/Message";
+import {Footer} from "../../components/Home/Footer";
+import {ContAllNews} from "../../components/Home/ContAllNews";
+import {MenuRight} from "../../components/Home/MenuRight";
+import {Timer} from "../../components/Home/Timer";
+import {Message} from "../../components/Home/Message";
 
 
 export const AllNews = () => {

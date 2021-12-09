@@ -7,8 +7,8 @@ export const LkMessagesMainYou = ({url,time,text}) => {
                 <span>{text}</span>
             </div>
             <div className="messageses_details">
-                <a href="#" className="messageses_details_logo"
-                   style={{backgroundImage: url}}/>
+                <a href="/" className="messageses_details_logo"
+                   style={{backgroundImage: url}}> </a>
                 <div className="messageses_details_time">{time}</div>
             </div>
         </div>

@@ -1,11 +1,12 @@
 import React from 'react';
-import {Header} from "../../components/Header";
+import {Header} from "../../components/Home/Header";
 
-import {Footer} from "../../components/Footer";
-import {ContRegister} from "../../components/ContRegister";
-import {MenuRight} from "../../components/MenuRight";
-import {Timer} from "../../components/Timer";
-import {Message} from "../../components/Message";
+import {Footer} from "../../components/Home/Footer";
+import {ContRegister} from "../../components/Home/ContRegister";
+import {MenuRight} from "../../components/Home/MenuRight";
+import {Timer} from "../../components/Home/Timer";
+import {Message} from "../../components/Home/Message";
+import {MessageSms} from "../../components/Home/MessageSms";
 
 export const Registration = () => {
     return (
@@ -17,6 +18,7 @@ export const Registration = () => {
             <MenuRight/>
             <Timer />
             <Message/>
+            <MessageSms/>
         </div>
     );
 };

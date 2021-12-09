@@ -1,10 +1,10 @@
 import React from 'react';
-import {LkLeftMenu} from "../../components/LkLeftMenu";
-import {LkHomeHeader} from "../../components/LkHomeHeader";
+import {LkLeftMenu} from "../../components/Lk/LkLeftMenu";
+import {LkHomeHeader} from "../../components/Lk/LkHomeMain/LkHomeHeader";
 
-import {LkHomeRightSlidebar} from "../../components/LkHomeRightSlidebar";
-import {LkAddProgMain} from "../../components/LkAddProgMain";
-import {LkBalanceItemsMini} from "../../components/LkBalanceItemsMini";
+import {LkHomeRightSlidebar} from "../../components/Lk/LkHomeMain/LkHomeRightSlidebar";
+import {LkAddProgMain} from "../../components/Lk/LkAddProgMain";
+import {LkBalanceItemsMini} from "../../components/Lk/BalanceItemsMini";
 
 export const AddProg = () => {
     return (

@@ -1,22 +1,14 @@
-import {VOTES} from './actions'
+import {NEWS} from './actions'
 const initialState = {
     value:{
-        post:[{
-            question:'',
-            answers:[{
-                name:'',
-                value: '',
-            }],
-            all_answers:[],
-            all:[]
-        }]
+        news:[]
     }
 
 }
 
-export const votesReducer = (state = initialState, action) => {
+export const newsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case VOTES: {
+        case NEWS: {
             return {
                 ...state,
                 value:action.payload

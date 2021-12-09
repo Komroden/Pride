@@ -1,12 +1,14 @@
-import { USER_INFO  } from './actions'
+import {USER_DATA} from './actions'
 const initialState = {
-    value:{}
+    value:{
+        Name:''
+    }
 
 }
 
-export const userInfoReducer = (state = initialState, action) => {
+export const userDataReducer = (state = initialState, action) => {
     switch (action.type) {
-        case USER_INFO: {
+        case USER_DATA: {
             return {
                 ...state,
                 value:action.payload

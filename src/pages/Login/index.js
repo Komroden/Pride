@@ -1,10 +1,10 @@
 import React from 'react';
-import {Header} from "../../components/Header";
-import {Footer} from "../../components/Footer";
-import {ContLogin} from "../../components/ContLogin";
-import {MenuRight} from "../../components/MenuRight";
-import {Timer} from "../../components/Timer";
-import {Message} from "../../components/Message";
+import {Header} from "../../components/Home/Header";
+import {Footer} from "../../components/Home/Footer";
+import {ContLogin} from "../../components/Home/ContLogin";
+import {MenuRight} from "../../components/Home/MenuRight";
+import {Timer} from "../../components/Home/Timer";
+import {Message} from "../../components/Home/Message";
 
 export const Login = () => {
     return (

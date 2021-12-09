@@ -1,8 +1,8 @@
-export const NEWS = "NEWS_LIST::NEWS";
+export const CONTESTS = "CONTESTS_LIST::CONTESTS";
 
 
-export const setNewsList = (value) => ({
-    type: NEWS,
+export const setContestsList = (value) => ({
+    type: CONTESTS,
     payload: value
 
 

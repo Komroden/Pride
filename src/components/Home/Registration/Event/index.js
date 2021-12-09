@@ -1,10 +1,17 @@
 import React, {useEffect, useState} from 'react';
+import {useTimer} from "../../../../hooks/useTimer";
+import {EventLink} from "./EventLink";
 
 export const Event = () => {
-    const[data, setData]=useState({})
+
+    const [show,setShow]=useState({
+        contest:[0
+        ]
+    })
+
 
     useEffect(()=>{
-        fetch('http://lk.pride.kb-techno.ru/api/Main/last-contest',{
+        fetch(`http://127.0.0.1:8000/api/contest/show-last-contests/`,{
             method:'GET',
             headers:{'Content-Type': 'application/json',
                 'Accept': 'application/json'}
@@ -19,15 +26,17 @@ export const Event = () => {
                 }
             })
             .then((body)=>{
-                setData(body)
-
+                setShow(body)
 
             })
+
             .catch((e) => {
                 console.log(e.message);
 
             });
     },[])
+
+    const{day,seconds,hours,minute}=useTimer(show.contest[0].expired_date)
     return (
         <>
             <div className="show_left wow slideInLeft" data-wow-duration="2s">
@@ -38,60 +47,36 @@ export const Event = () => {
                     accumsan lacus vel facilisis.
                 </div>
                 <div className="show_links">
-                    <a href="#" className="winners">Победители</a>
-                    <a href="#" className="lasr_prize">Последние призы</a>
-                </div>
-                <div className="under_footer_right">
-                    <ul>
-                        <li>
-                            <a href="#" className="fb"/>
-                        </li>
-                        {/* <li>*/}
-                        {/*    <a href="#" class="m"></a>*/}
-                        {/*</li> */}
-                        <li>
-                            <a href="#" className="telegram"/>
-                        </li>
-                        <li>
-                            <a href="#" className="btc"/>
-                        </li>
-                        <li>
-                            <a href="#" className="tw"/>
-                        </li>
-                        <li>
-                            <a href="#" className="inst"/>
-                        </li>
-                        <li>
-                            <a href="#" className="gith"/>
-                        </li>
-
-                    </ul>
+                    <EventLink path='/draw' classes='winners' title={'Победители'}/>
+                    <EventLink path='/draw' classes='lasr_prize' title={'Призы'}/>
                 </div>
             </div>
             <div className="show_right">
                 <img src="/images/plize.png" alt="" className="prize_img wow pulse" data-wow-iteration="infinite"
                      data-wow-duration="2s"/>
-                <div className="title_dark_show">Получи 0.25 BTC</div>
+                <div className="title_dark_show">Получи {show.contest[0].Name}</div>
                 <div className="clock_show">
                     <div className="day cl">
-                        <div className="plate_clock" id="dayscount"></div>
+                        <div className="plate_clock" id="dayscount">{day}</div>
                         <div className="descr_clock">days</div>
                     </div>
                     <div className="hour cl">
-                        <div className="plate_clock" id="hourscount"></div>
+                        <div className="plate_clock" id="hourscount">{hours}</div>
                         <div className="descr_clock">Hours</div>
                     </div>
                     <div className="minut cl">
-                        <div className="plate_clock" id="minscount"></div>
+                        <div className="plate_clock" id="minscount">{minute}</div>
                         <div className="descr_clock">minutes</div>
                     </div>
                     <div className="secu cl">
-                        <div className="plate_clock" id="secscount"></div>
+                        <div className="plate_clock" id="secscount">{seconds}</div>
                         <div className="descr_clock">seconds</div>
                     </div>
                 </div>
-                <a href="#" className="open_prize">принять участие в конкурсе</a>
-                <div className="sow_foot">Количество участников: <span>12 985</span></div>
+                <div className="show_descr">{show.contest[0].Description}
+                </div>
+                <a href="/" className="open_prize">принять участие в конкурсе</a>
+                <div className="sow_foot">Количество участников: <span>{show.contest[0].members}</span></div>
             </div>
         </>
     );

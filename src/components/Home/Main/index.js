@@ -1,7 +1,14 @@
 import React from 'react';
 import './style.scss';
+import {useHistory} from "react-router";
 
 export const Main = () => {
+     const {push}=useHistory();
+     const handlePush=(e)=>{
+         e.preventDefault()
+        push('/lk')
+
+     }
     return (
         <div className="firstbl">
             <div className="first_containerP">
@@ -11,7 +18,7 @@ export const Main = () => {
                     <h1 className="first_title">Создай свой Доход <br/>и <span>Зарабатывай</span></h1>
                     <div className="first_sub_title">Зарабатывай на проверенных</div>
                     <div className="first_sub_sub_title">Проверенный МЛМ Агрегатор</div>
-                    <a href="#" className="invest_btn">Инвестировать</a>
+                    <a href={'/'} onClick={handlePush} className="invest_btn wow slideInUp bag" >Инвестировать</a>
                     <div className="first_left_bottom">
                         <div className="first_left_bottom_title">
                             инвестиционный <br/>фонд компании

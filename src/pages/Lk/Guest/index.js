@@ -1,9 +1,9 @@
 import React from 'react';
-import {LkLeftMenu} from "../../components/Lk/LkLeftMenu";
-import {LkHomeHeader} from "../../components/Lk/LkHomeMain/LkHomeHeader";
+import {LkLeftMenu} from "../../../components/Lk/LkLeftMenu";
+import {LkHomeHeader} from "../../../components/Lk/LkHomeMain/LkHomeHeader";
 
-import {LkHomeRightSlidebar} from "../../components/Lk/LkHomeMain/LkHomeRightSlidebar";
-import {LkGuestMain} from "../../components/Lk/LkGuestMain";
+import {LkHomeRightSlidebar} from "../../../components/Lk/LkHomeMain/LkHomeRightSlidebar";
+import {LkGuestMain} from "../../../components/Lk/LkGuestMain";
 
 export const Guest = () => {
     return (

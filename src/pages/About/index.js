@@ -1,12 +1,12 @@
 import React from 'react';
 
-import {Footer} from "../../components/Footer";
-import {HeaderSimpleAbout} from "../../components/HeaderSimpleAbout";
-import {Header} from "../../components/Header";
-import {ContAbout} from "../../components/ContAbout";
-import {MenuRight} from "../../components/MenuRight";
-import {Timer} from "../../components/Timer";
-import {Message} from "../../components/Message";
+import {Footer} from "../../components/Home/Footer";
+import {HeaderSimpleAbout} from "../../components/Home/Header/HeaderSimpleAbout";
+import {Header} from "../../components/Home/Header";
+import {ContAbout} from "../../components/Home/ContAbout";
+import {MenuRight} from "../../components/Home/MenuRight";
+import {Timer} from "../../components/Home/Timer";
+import {Message} from "../../components/Home/Message";
 
 export const About = () => {
     return (

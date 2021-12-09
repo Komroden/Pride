@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {CSSTransition} from "react-transition-group";
+import Fade from '@mui/material/Fade';
 import './style.scss';
 
 export const LkTransactionsMainLineInfo = ({status,userClass, statusClass}) => {
@@ -35,13 +35,13 @@ export const LkTransactionsMainLineInfo = ({status,userClass, statusClass}) => {
                 </div>
                 <div className="lineinfo__email">
                     <img src="/images/icon_ma.png" alt=""/>
-                    <a href="#">superuser@gmail.com</a>
+                    <a href="/">superuser@gmail.com</a>
                 </div>
                 <div className="lineinfo__status">
                     <span></span>
                 </div>
             </div>
-            <CSSTransition  in={open} classNames='alert' timeout={300} unmountOnExit>
+            <Fade  in={open} classNames='alert' timeout={300} unmountOnExit>
             <div className="lineinfo__body">
                 <div className="lineinfo__top">
                     <div className="lineinfo__day">
@@ -69,7 +69,7 @@ export const LkTransactionsMainLineInfo = ({status,userClass, statusClass}) => {
                     </div>
                     <div className="lineinfo__email">
                         <img src="/images/icon_ma.png" alt=""/>
-                        <a href="#">superuser@gmail.com</a>
+                        <a href="/">superuser@gmail.com</a>
                     </div>
                     <div className="lineinfo__status">
                         <span></span>
@@ -103,7 +103,7 @@ export const LkTransactionsMainLineInfo = ({status,userClass, statusClass}) => {
                         </div>
                         <div className="lineinfo__email">
                             <img src="/images/icon_ma.png" alt=""/>
-                            <a href="#">superuser@gmail.com</a>
+                            <a href="/">superuser@gmail.com</a>
                         </div>
                         <div className="lineinfo__status">
                             <span></span>
@@ -136,7 +136,7 @@ export const LkTransactionsMainLineInfo = ({status,userClass, statusClass}) => {
                         </div>
                         <div className="lineinfo__email">
                             <img src="/images/icon_ma.png" alt=""/>
-                            <a href="#">superuser@gmail.com</a>
+                            <a href="/">superuser@gmail.com</a>
                         </div>
                         <div className="lineinfo__status">
                             <span></span>
@@ -169,7 +169,7 @@ export const LkTransactionsMainLineInfo = ({status,userClass, statusClass}) => {
                         </div>
                         <div className="lineinfo__email">
                             <img src="/images/icon_ma.png" alt=""/>
-                            <a href="#">superuser@gmail.com</a>
+                            <a href="/">superuser@gmail.com</a>
                         </div>
                         <div className="lineinfo__status">
                             <span></span>
@@ -200,7 +200,7 @@ export const LkTransactionsMainLineInfo = ({status,userClass, statusClass}) => {
                     </div>
                     <div className="lineinfo__email">
                         <img src="/images/icon_ma.png" alt=""/>
-                        <a href="#">superuser@gmail.com</a>
+                        <a href="/">superuser@gmail.com</a>
                     </div>
                     <div className="lineinfo__status">
                         <span></span>
@@ -234,7 +234,7 @@ export const LkTransactionsMainLineInfo = ({status,userClass, statusClass}) => {
                         </div>
                         <div className="lineinfo__email">
                             <img src="/images/icon_ma.png" alt=""/>
-                            <a href="#">superuser@gmail.com</a>
+                            <a href="/">superuser@gmail.com</a>
                         </div>
                         <div className="lineinfo__status">
                             <span></span>
@@ -265,7 +265,7 @@ export const LkTransactionsMainLineInfo = ({status,userClass, statusClass}) => {
                         </div>
                         <div className="lineinfo__email">
                             <img src="/images/icon_ma.png" alt=""/>
-                            <a href="#">superuser@gmail.com</a>
+                            <a href="/">superuser@gmail.com</a>
                         </div>
                         <div className="lineinfo__status">
                             <span></span>
@@ -298,14 +298,14 @@ export const LkTransactionsMainLineInfo = ({status,userClass, statusClass}) => {
                     </div>
                     <div className="lineinfo__email">
                         <img src="/images/icon_ma.png" alt=""/>
-                        <a href="#">superuser@gmail.com</a>
+                        <a href="/">superuser@gmail.com</a>
                     </div>
                     <div className="lineinfo__status">
                         <span></span>
                     </div>
                 </div>
             </div>
-            </CSSTransition>
+            </Fade>
         </div>
     );
 };

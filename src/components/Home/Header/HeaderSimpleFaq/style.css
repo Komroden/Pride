@@ -1,0 +1,63 @@
+.simple_header_form {
+  padding-top: 12px;
+}
+.simple_header_form form {
+  display: flex;
+}
+.simple_header_form form .inputp {
+  padding: 13px 25px;
+  display: inline-block;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.simple_header_form form input.inputp {
+  padding: 14px 15px 15px 42px !important;
+  width: 270px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.simple_header_form form .label_i {
+  position: relative;
+}
+.simple_header_form form .label_i:before {
+  position: absolute;
+  content: "\f002";
+  font-size: 14px;
+  color: #fec40c;
+  font-family: "FontAwesome";
+  top: 14px;
+  left: 20px;
+}
+.simple_header_form form .column_categ {
+  position: relative;
+}
+.simple_header_form form .opencat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 162px;
+  font-weight: 300;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+.simple_header_form form .opencat:after {
+  content: "\f107";
+  font-family: "FontAwesome";
+  font-size: 16px;
+  display: inline-block;
+}
+.simple_header_form form .opencat:hover {
+  color: #fec40c;
+}
+.simple_header_form form .subm_search {
+  background: #b62b70;
+  padding: 13px 50px;
+}
+.simple_header_form form .subm_search:hover {
+  background: #fec40c;
+  color: #271156;
+}
+
+/*# sourceMappingURL=style.css.map */

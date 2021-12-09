@@ -1,6 +1,19 @@
 import React from 'react';
+import {useHistory} from "react-router";
+import {BlockUserId} from "../BlockUserId";
 
-export const LkGuestMainGuestItem = ({image,name,year,isOnline}) => {
+
+
+export const LkGuestMainGuestItem = ({image,name,year,isOnline,setOpenModal}) => {
+
+    const {push}=useHistory()
+    const handleSend=()=>{
+        push ('/messages')
+    }
+    const handleOpen=(e)=>{
+        e.preventDefault()
+        setOpenModal(true)
+    }
     return (
         <div className="gost_item" style={{backgroundColor: "#fcf2ff"}} >
             <div className="gost_item_top">
@@ -12,21 +25,17 @@ export const LkGuestMainGuestItem = ({image,name,year,isOnline}) => {
                 </div>
             </div>
             <div className="gost_item_buttons">
-                <a href="#" className="gost_item_send_mes">
+                <a href={'/'} onClick={handleSend} className="gost_item_send_mes">
                     <img src="/images/send_mess.png" alt=""/>
                     <span>Отправить сообщение</span>
                 </a>
-                <a href="#" className="gost_item_profile">
+                <a href={'/'} onClick={handleOpen} className="gost_item_profile">
                     <img src="/images/prof.png" alt=""/>
                     <span>Профайл пользователя</span>
+
                 </a>
             </div>
-            <a href="#" className="gost_item_blocked">
-										<span className="gost_item_blocked_img">
-											<img src="/images/blocked.png" alt=""/>
-										</span>
-                <span className="gost_item_blocked_text">Заблокировать пользователя</span>
-            </a>
+            <BlockUserId/>
         </div>
     );
 };

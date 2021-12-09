@@ -1,13 +1,12 @@
-.news_rowH {
+.news_rowHome {
   margin-top: 80px;
   margin-bottom: 30px;
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .news_item_refer {
-  margin-bottom: 35px;
   border-radius: 10px;
   flex-basis: 48%;
   border: 1px solid #e94c51;
@@ -64,6 +63,15 @@
 .news_item_refer:nth-child(3n) {
   background: #530179;
   border-color: #ab8611;
+}
+
+.contact_blockFormReview {
+  padding-bottom: 0;
+}
+
+.pride_titleFormReview {
+  font-size: 35px;
+  margin-bottom: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

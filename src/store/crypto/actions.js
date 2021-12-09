@@ -1,8 +1,8 @@
-export const USER_DATA = "USER_INFO::USER_DATA";
+export const CRYPTO_DATA = "CRYPTO_INFO::CRYPTO_DATA";
 
 
-export const UserData = (value) => ({
-    type: USER_DATA,
+export const CryptoData = (value) => ({
+    type: CRYPTO_DATA,
     payload: value
 
 

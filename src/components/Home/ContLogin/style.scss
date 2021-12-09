@@ -131,7 +131,7 @@
     position: absolute;
     bottom: 15px;
     right: 15px;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 600;
     color: #e94c51;
   }
@@ -171,4 +171,31 @@
 .d_flex {
   display: flex;
   justify-content: space-between;
+}
+.error_message{
+  font-size: 10px;
+  font-weight: 600;
+  color: #e94c51;
+}
+.error_message{
+  font-size: 10px;
+  font-weight: 600;
+  color: #e94c51;
+}
+.email__wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.email_drop{
+  width: 60%!important;
+}
+.button_drop{
+  padding: 15px!important;
+  width: 30%!important;
+  font-size:13px!important;
+  margin-right: 0!important;
+  text-transform: none!important;
+
 }

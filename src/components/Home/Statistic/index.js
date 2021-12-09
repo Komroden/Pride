@@ -1,6 +1,38 @@
-import React from 'react';
+import React, { useState} from 'react';
 import './style.scss'
+import {RegistItem} from "./RegistItem";
+import {PayItem} from "./PayItem";
+import {InvestItem} from "./InvestItem";
 export const Statistic = () => {
+    const[data]=useState({
+        registrations: [],
+        payments: [],
+        investments: []
+    })
+
+    // useEffect(()=>{
+    //     fetch('http://lk.pride.kb-techno.ru/api/Main/last-events',{
+    //         method:'GET',
+    //         headers:{'Content-Type': 'application/json',
+    //             'Accept': 'application/json'}
+    //     })
+    //         .then((res) => {
+    //             if (res.status >= 200 && res.status < 300) {
+    //                 return res.json();
+    //             } else {
+    //                 let error = new Error(res.statusText);
+    //                 error.response = res;
+    //                 throw error
+    //             }
+    //         })
+    //         .then((body)=>{
+    //                 setData(body)
+    //         })
+    //         .catch((e) => {
+    //             console.log(e.message);
+    //         });
+    //
+    // },[])
     return (
         <div className="stastistic">
             <div className="containerP wow slideInUp" data-wow-duration="2s">
@@ -16,46 +48,8 @@ export const Statistic = () => {
                             <span className="stat_sub_tit">real time</span>
                         </div>
                         <ul className="static_data">
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_user">superuser82@gmail.com</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_user">superuser82@gmail.com</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_user">superuser82@gmail.com</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_user">superuser82@gmail.com</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_user">superuser82@gmail.com</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_user">superuser82@gmail.com</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_user">superuser82@gmail.com</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_user">superuser82@gmail.com</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_user">superuser82@gmail.com</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_user">superuser82@gmail.com</span>
-                            </li>
+                            {data.registrations.map((item,index)=>
+                                <RegistItem key={index} date={item.creationDate} object={item.eventData}/>)}
                         </ul>
                     </div>
                     <div className="static_item last_paymend wow slideInUp" data-wow-duration="2s">
@@ -64,46 +58,8 @@ export const Statistic = () => {
                             <span className="stat_sub_tit">real time</span>
                         </div>
                         <ul className="static_data">
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_pay">выплачено - 112 456 руб.</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_pay">выплачено - 112 456 руб.</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_pay">выплачено - 112 456 руб.</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_pay">выплачено - 112 456 руб.</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_pay">выплачено - 112 456 руб.</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_pay">выплачено - 112 456 руб.</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_pay">выплачено - 112 456 руб.</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_pay">выплачено - 112 456 руб.</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_pay">выплачено - 112 456 руб.</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_pay">выплачено - 112 456 руб.</span>
-                            </li>
+                            {data.payments.map((item,index)=>
+                                <PayItem key={index} date={item.creationDate} object={item.eventData}/>)}
                         </ul>
                     </div>
                     <div className="static_item last_invest wow slideInRight" data-wow-duration="3s">
@@ -112,46 +68,8 @@ export const Statistic = () => {
                             <span className="stat_sub_tit">real time</span>
                         </div>
                         <ul className="static_data">
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_money">Инвестированно - 15 000 р</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_money">Инвестированно - 15 000 р</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_money">Инвестированно - 15 000 р</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_money">Инвестированно - 15 000 р</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_money">Инвестированно - 15 000 р</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_money">Инвестированно - 15 000 р</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_money">Инвестированно - 15 000 р</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_money">Инвестированно - 15 000 р</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_money">Инвестированно - 15 000 р</span>
-                            </li>
-                            <li>
-                                <span className="left_stat">12.11.2020  15:45:59</span>
-                                <span className="left_money">Инвестированно - 15 000 р</span>
-                            </li>
+                            {data.investments.map((item,index)=>
+                                <InvestItem key={index} date={item.creationDate} object={item.eventData}/>)}
                         </ul>
                     </div>
                 </div>

@@ -12,74 +12,176 @@ import {FullNews} from "./pages/FullNews";
 import {AllNews} from "./pages/AllNews";
 import {Login} from "./pages/Login";
 import {Registration} from "./pages/Registration";
-import {LkHome} from "./pages/LkHome";
-import { setMinute, setPrice, setSeconds} from "./store/timer/actions";
-import {LkUser} from "./pages/LkUser";
-import {LkUserTransactions} from "./pages/LkUserTransactions";
+import {LkHome} from "./pages/Lk/Home";
+import {setMinute, setPrice, setSeconds} from "./store/timer/actions";
+import {LkUser} from "./pages/Lk/User";
+import {LkUserTransactions} from "./pages/Lk/UserTransactions";
 import {AddProg} from "./pages/AddProg";
-import {Guest} from "./pages/Guest";
-import {History} from "./pages/History";
+import {Guest} from "./pages/Lk/Guest";
+import {History} from "./pages/Lk/History";
 import {Messages} from "./pages/Lk/Messages";
 import {NewMessage} from "./pages/Lk/NewMessage";
+import {News} from "./pages/Lk/News";
+import {Refill} from "./pages/Lk/Refill";
+import {ProgramMaxi} from "./pages/Lk/ProgramMaxi";
+import {Draw} from "./pages/Lk/Draw";
+import {Settings} from "./pages/Lk/Settings";
+import {PrivateRoute} from "./hocs/PrivateRoute";
+import {GetUser} from "./api/GetUser";
+import {Offer} from "./pages/Lk/Offer";
+import {OfferImg} from "./pages/Lk/OfferImg";
+import {UserRegistration} from "./store/auth/actions";
+import {Output} from "./pages/Lk/Output";
+import {Vote} from "./pages/Lk/Vote";
+
+import {Notifications} from "./pages/Lk/Notifications";
+import {setNewsList} from "./store/news/actions";
+import {useTimerUp} from "./hooks/useTimerUp";
+import {Structure} from "./pages/Lk/Structure";
+import {ProgramMaxiThree} from "./pages/Lk/ProgramMaxiThree";
+import {ProgramMaxiTwo} from "./pages/Lk/ProgramMaxiTwo";
+import {Votes} from "./store/votes/actions";
+import {CryptoData} from "./store/crypto/actions";
 
 
-
+const loadJSON=key=>
+    JSON.parse(sessionStorage.getItem(key));
 export function App() {
+    const[news,setNews]=useState({
+        news:[]
+    })
     const { auth } = useSelector((state) => state);
-    useEffect(()=>{
-        new WOW.WOW().init();
-    },[])
-    const[sec,setSec]=useState(0);
-    const[min,setMin]=useState(0);
-    const[pri,setPri]=useState(0);
 
+    GetUser()
     const dispatch = useDispatch();
+    const setTokens = useCallback(() => {
+        dispatch(UserRegistration(loadJSON('key')))
+    }, [dispatch]);//auth.token
+    useEffect(()=>{
+        if (loadJSON('key')) {
+            setTokens()
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[auth.token])
+
+    useEffect(()=>{
+        new WOW.WOW({
+            live:false,
+            mobile: true,
+        }).init();
+    },[])
+    const{seconds,minute,price}=useTimerUp()
     const setSecond = useCallback(() => {
-        dispatch(setSeconds(sec))
-    }, [dispatch,sec]);
+        dispatch(setSeconds(seconds))
+    }, [dispatch,seconds]);
     const setMinutes = useCallback(() => {
-        dispatch(setMinute(min))
-    }, [dispatch,min]);
+        dispatch(setMinute(minute))
+    }, [dispatch,minute]);
     const setPrices = useCallback(() => {
-        dispatch(setPrice(pri))
-    }, [dispatch,pri]);
-    const { showMessage } = useSelector((state) => state);
+        dispatch(setPrice(price))
+    }, [dispatch,price]);
 
 
-    useEffect(() => {
-
-        if(min===60){
-            setMin(0);
-
-        }else{
-            setTimeout(() => setMin(min+1) , 60000);
-        }
-        if(sec===60){
-            setSec(0)
-
-        }else{
-            setTimeout(() => setSec(sec+1) , 1000);
-
-        }
-        setTimeout(() => setPri(pri+25) , 5000);
-    },);
-
-
-    useEffect(() => {
-        setSecond()
-    },[sec])
     useEffect(() => {
         setMinutes()
-    },[min])
+    },[setMinutes,minute])
     useEffect(() => {
         setPrices()
-    },[pri])
+    },[setPrices,price])
+    useEffect(() => {
+        setSecond()
+    },[setSecond,seconds])
 
+
+
+    // news
+    const setNewses = useCallback(() => {
+        dispatch(setNewsList(news))
+    }, [dispatch,news]);
+    useEffect(()=>{
+        fetch('http://127.0.0.1:8000/api/news/show-news',{
+            method:'GET',
+            headers:{'Content-Type': 'application/json',
+                'Accept': 'application/json'}
+        })
+            .then((res) => res.json())
+            .then((body)=>{
+                setNews(body)
+            })
+
+            .catch((e) => {
+                console.log(e.message);
+            });
+    },[])
+    useEffect(()=>{
+        setNewses()
+    },[setNewses,news])
+
+
+
+    // fromHome
+
+    const [value,setValue]=useState({
+        post:[{
+            question:'',
+            answers:[{
+                name:'',
+                value: '',
+            }],
+            all_answers:[],
+            all:[]
+        }]
+    })
+    useEffect(()=>{
+        if(auth.token){
+        fetch('http://127.0.0.1:8000/api/contest/show-post',{
+            method:'GET',
+            headers:{
+                "accept": "application/json",
+                'Authorization':`Bearer ${auth.token}`}
+        })
+            .then(res=>res.json())
+            .then(body=>setValue(body))
+        }
+    },[auth.token])
+
+    const setVotes = useCallback(() => {
+        dispatch(Votes(value))
+    }, [dispatch,value]);
+
+    useEffect(()=>{
+
+        setVotes()
+    },[setVotes,value])
+
+
+
+    // CRYPTO
+    const[crypto,setCrypto]=useState([])
+    const setCryptoData = useCallback(() => {
+        dispatch(CryptoData(crypto))
+    }, [dispatch,crypto]);
+    useEffect(()=>{
+        fetch('http://127.0.0.1:8000/api/finance/show-price-crypto',{
+            method:'GET',
+            headers:{'Content-Type': 'application/json',
+                'Accept': 'application/json'}
+        })
+            .then((res) => res.json())
+            .then((body)=>setCrypto(body.data)
+            )
+            .catch((e) => {
+                console.log(e.message);
+            });
+
+    },[])
+    useEffect(()=>{
+        if(!crypto) return
+        setCryptoData()
+    },[setCryptoData,crypto])
   return(
 <div>
-
     <Switch>
-
         <Route  exact path='/'>
             <Home/>
         </Route>
@@ -95,7 +197,7 @@ export function App() {
         <Route  path='/contact'>
             <Contact/>
         </Route>
-        <Route  path='/full'>
+        <Route  path='/full/:newsId'>
             <FullNews/>
         </Route>
         <Route  path='/allNews'>
@@ -107,35 +209,82 @@ export function App() {
         <Route  path='/register'>
             <Registration/>
         </Route>
-            <Route  path='/lk'>
-                <LkHome/>
-            </Route>
-        <Route  path='/user'>
+        <PrivateRoute auth={auth}  path='/structure'>
+            <Structure/>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/lk'>
+            <LkHome/>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/user'>
            <LkUser/>
-        </Route>
-        <Route  path='/transactions'>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/transactions'>
             <LkUserTransactions/>
-        </Route>
-        <Route  path='/addProg'>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/addProg'>
           <AddProg/>
-        </Route>
-        <Route  path='/guest'>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/guest'>
            <Guest/>
-        </Route>
-        <Route  path='/history'>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/history'>
            <History/>
-        </Route>
-        <Route  path='/messages'>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/messages'>
            <Messages/>
-        </Route>
-        <Route  path='/newMessage'>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/notifications'>
+            <Notifications/>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/newMessage'>
             <NewMessage/>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/lkNews'>
+            <News/>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/refill'>
+            <Refill/>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/programMaxi'>
+            <ProgramMaxi/>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/programMaxi2'>
+            <ProgramMaxiTwo/>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/programMaxi3'>
+            <ProgramMaxiThree/>
+        </PrivateRoute>
+        {/*<PrivateRoute auth={auth} path='/program15'>*/}
+        {/*   <Program15/>*/}
+        {/*</PrivateRoute>*/}
+        {/*<PrivateRoute auth={auth} path='/programMatrix'>*/}
+        {/*  <ProgramMatrix/>*/}
+        {/*</PrivateRoute>*/}
+        {/*<PrivateRoute auth={auth} path='/programAuto'>*/}
+        {/*    <ProgramAuto/>*/}
+        {/*</PrivateRoute>*/}
+        {/*<PrivateRoute auth={auth} path='/technique'>*/}
+        {/*    <ProgramTechnique/>*/}
+        {/*</PrivateRoute>*/}
+        <PrivateRoute auth={auth} path='/draw'>
+            <Draw/>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/settings'>
+            <Settings/>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/offer'>
+            <Offer/>
+        </PrivateRoute>
+        <Route  path='/offerImg'>
+            <OfferImg/>
         </Route>
+        <PrivateRoute auth={auth} path='/output'>
+            <Output/>
+        </PrivateRoute>
+        <PrivateRoute auth={auth} path='/vote'>
+            <Vote/>
+        </PrivateRoute>
     </Switch>
-
-
-
-
 
 </div>
 

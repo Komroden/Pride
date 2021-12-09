@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const LkAddProgMainBalanceItem = ({url,bgr,title,text,value,allValue,}) => {
+export const LkAddProgMainBalanceItem = ({url,bgr,title,text,value,course}) => {
     return (
         <div className="balance_cost_item" style={{backgroundImage:bgr}}>
             <div className="balance_cost_item_top">
@@ -12,8 +12,8 @@ export const LkAddProgMainBalanceItem = ({url,bgr,title,text,value,allValue,}) =
                     <div className="balance_cost_item_lefttext">{text}</div>
                 </div>
                 <div className="balance_cost_item_right">
-                    <div className="balance_cost_item_right_text">{value}</div>
-                    <div className="balance_cost_item_right_text">{allValue}</div>
+                    <div className="balance_cost_item_right_text">{value+' '+text}</div>
+                    <div className="balance_cost_item_right_text">{course*value+' USD'}</div>
                 </div>
             </div>
         </div>

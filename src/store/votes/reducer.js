@@ -1,12 +1,22 @@
-import {USER_DATA} from './actions'
+import {VOTES} from './actions'
 const initialState = {
-    value:{}
+    value:{
+        post:[{
+            question:'',
+            answers:[{
+                name:'',
+                value: '',
+            }],
+            all_answers:[],
+            all:[]
+        }]
+    }
 
 }
 
-export const userDataReducer = (state = initialState, action) => {
+export const votesReducer = (state = initialState, action) => {
     switch (action.type) {
-        case USER_DATA: {
+        case VOTES: {
             return {
                 ...state,
                 value:action.payload

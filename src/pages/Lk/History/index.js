@@ -1,10 +1,10 @@
 import React from 'react';
-import {LkLeftMenu} from "../../components/Lk/LkLeftMenu";
-import {LkHomeHeader} from "../../components/Lk/LkHomeMain/LkHomeHeader";
-import {LkHomeRightSlidebar} from "../../components/Lk/LkHomeMain/LkHomeRightSlidebar";
+import {LkLeftMenu} from "../../../components/Lk/LkLeftMenu";
+import {LkHomeHeader} from "../../../components/Lk/LkHomeMain/LkHomeHeader";
+import {LkHomeRightSlidebar} from "../../../components/Lk/LkHomeMain/LkHomeRightSlidebar";
 
-import {LkBalanceItemsMini} from "../../components/Lk/BalanceItemsMini";
-import {LkHistoryMain} from "../../components/Lk/LkHistoryMain";
+import {LkBalanceItemsMini} from "../../../components/Lk/BalanceItemsMini";
+import {LkHistoryMain} from "../../../components/Lk/LkHistoryMain";
 
 export const History = () => {
     return (

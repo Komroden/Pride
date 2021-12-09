@@ -1,15 +1,15 @@
-import { OPEN_MENU } from './actions'
+import { OPEN_LEFTMENU } from './actions'
 const initialState = {
-    showMenuBurg: false
+    leftMenu: false
 
 }
 
-export const menuReducer = (state = initialState, action) => {
+export const leftMenuReducer = (state = initialState, action) => {
     switch (action.type) {
-        case OPEN_MENU: {
+        case OPEN_LEFTMENU: {
             return {
                 ...state,
-                showMenuBurg: !state.showMenuBurg
+                leftMenu: !state.leftMenu
             }
         }
         default:

@@ -4,6 +4,7 @@ export const SET_PRICE = "TIMER::SET_PRICE";
 export const SET_SECONDS = "TIMER::SET_SECONDS";
 
 
+
 export const openTimer = () => ({
     type: OPEN_TIMER,
 });
@@ -21,6 +22,8 @@ export const setSeconds = (seconds) => ({
     type: SET_SECONDS,
     payload: seconds
 });
+
+
 
 
 

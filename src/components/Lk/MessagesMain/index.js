@@ -2,19 +2,17 @@ import React from 'react';
 import './style.scss';
 import {LkMessagesMainYou} from "./LkMessagesMainYou";
 import {LkMessagesMainUser} from "./LkMessagesMainUser";
-import {Emoji} from "./Emoji";
+import {Line} from "../MainTitle/GreyLine";
+import {LineTitle} from "../LineTitle";
+import {BlockUserId} from "../LkGuestMain/BlockUserId";
 
 export const MessagesMain = () => {
-    const rangeEmojis = Array.from({length: 256}, (v, k) => (k + 9728).toString(16));
+
     return (
         <>
-            <div className="grey_line"></div>
+            <Line/>
             <div className="main_for_all_pages message_no_right_pad">
-                <div className="main_content_right_sidebar_title_bl">
-                    <div className="main_content_right_sidebar_title_bl_title">СООБЩЕНИЯ</div>
-                    <div className="main_content_right_sidebar_title_bl_subtitle">Тут какойто текст про голосование
-                    </div>
-                </div>
+                <LineTitle title={'Сообщения'}/>
                 <div className="message_form_row">
                     <div className="message_left_form">
                         <div className="messageses">
@@ -34,10 +32,10 @@ export const MessagesMain = () => {
                                         </label>
                                     </div>
                                     <div className="mes_text">
-                                        <textarea placeholder="Type your message..."></textarea>
+                                        <textarea placeholder="Type your message..."/>
                                     </div>
                                     <div className="mes_emoji">
-                                        <a href="#">
+                                        <a href="/">
                                             <img src="/images/emoji.png" alt=""/>
                                         </a>
                                         {/*<div>*/}
@@ -68,20 +66,15 @@ export const MessagesMain = () => {
                                 </div>
                                 <div className="gost_item_buttons">
 
-                                    <a href="#" className="gost_item_profile">
+                                    <a href="/" className="gost_item_profile">
                                         <img src="/images/prof.png" alt=""/>
                                             <span>Профайл пользователя</span>
                                     </a>
                                 </div>
-                                <a href="#" className="gost_item_blocked">
-												<span className="gost_item_blocked_img">
-													<img src="/images/blocked.png" alt=""/>
-												</span>
-                                    <span className="gost_item_blocked_text">Заблокировать пользователя</span>
-                                </a>
+                                <BlockUserId/>
                             </div>
                         </div>
-                        <a href="#" className="technical_help">Тех поддержка</a>
+                        <a href="/" className="technical_help">Тех поддержка</a>
                     </div>
                 </div>
             </div>

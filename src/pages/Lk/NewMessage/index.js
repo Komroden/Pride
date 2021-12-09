@@ -1,10 +1,10 @@
 import React from 'react';
-import {LkLeftMenu} from "../../../components/LkLeftMenu";
-import {LkHomeHeader} from "../../../components/LkHomeHeader";
-import {LkBalanceItemsMini} from "../../../components/LkBalanceItemsMini";
+import {LkLeftMenu} from "../../../components/Lk/LkLeftMenu";
+import {LkHomeHeader} from "../../../components/Lk/LkHomeMain/LkHomeHeader";
+import {LkBalanceItemsMini} from "../../../components/Lk/BalanceItemsMini";
 
-import {LkHomeRightSlidebar} from "../../../components/LkHomeRightSlidebar";
-import {MessagesMain} from "../../../components/Lk/MessagesMain";
+import {LkHomeRightSlidebar} from "../../../components/Lk/LkHomeMain/LkHomeRightSlidebar";
+
 import {NewMessageMain} from "../../../components/Lk/NewMessageMain";
 
 export const NewMessage = () => {
@@ -16,7 +16,7 @@ export const NewMessage = () => {
                 <div className='main_content_row'>
                     <div className="main_content_central">
                         <LkBalanceItemsMini/>
-                         <NewMessageMain/>
+                         <NewMessageMain title={'Сообщения'} mode={true}/>
                     </div>
                     <LkHomeRightSlidebar/>
                 </div>

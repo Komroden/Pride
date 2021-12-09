@@ -1,3 +1,5 @@
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -86,6 +88,9 @@ footer, header, hgroup, menu, nav, section {
   height: 100%;
 }
 
+a{
+  cursor: pointer;
+}
 body *{
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
@@ -122,6 +127,7 @@ table {
   margin-left: auto;
   margin-right: auto;
 }
+
 
 img{
   max-width: 100%;
@@ -1441,9 +1447,7 @@ h1, .first_title{
   .user_main_block {
     padding: 20px 15px!important;
   }
-  .user_main_block_logo {
-    margin-right: 15px!important;
-  }
+
   .user_main_block_info {
     max-width: 24%!important;
   }
@@ -1630,20 +1634,19 @@ h1, .first_title{
     flex-basis: 100%!important;
   }
   .balance_cost_item {
-    max-width: 310px!important;
+    max-width: 300px!important;
   }
   .hamburger {
     transition: all 0.5s ease-in-out!important;
     position: fixed!important;
-    left: 0px!important;
+    left: 25px!important;
     z-index: 22!important;
     top: 5px!important;
     background-color: #6424ad!important;
     width: 60px!important;
     height: 50px!important;
     padding: 15px!important;
-    border-top-right-radius: 10px!important;
-    border-bottom-right-radius: 10px!important;
+    border-radius: 10px!important;
     &.active {
       left: 230px!important;
       position: absolute!important;
@@ -1659,6 +1662,7 @@ h1, .first_title{
 }
 
 @media screen and ( max-width: 1350px) {
+
   .child_ul a {
     font-size: 16px!important;
   }
@@ -1729,6 +1733,17 @@ h1, .first_title{
 }
 
 @media screen and ( max-width: 1110px) {
+
+  .hamburger{
+    left:17px!important;
+    width: 40px!important;
+    height: 30px!important;
+    padding: 8px!important;
+    span{
+      height: 2px!important;
+      width: 15px!important;
+    }
+  }
   .balance_cost_item {
     max-width: 304px!important;
   }
@@ -1801,6 +1816,9 @@ h1, .first_title{
 }
 
 @media screen and ( max-width: 980px) {
+  .user_main_block{
+    flex-wrap: wrap!important;
+  }
   .lider_top {
     padding: 0 10px!important;
   }
@@ -1821,9 +1839,7 @@ h1, .first_title{
   .lider_top {
     min-height: 105px!important;
   }
-  .balance_cost_item:nth-child(3n) {
-    margin-right: 15px!important;
-  }
+
   .balance_cost_item {
     margin-right: 15px !important;
     margin-left: 15px !important;
@@ -2222,7 +2238,7 @@ h1, .first_title{
   .balance_cost_item {
     margin-right: 5px !important;
     margin-left: 5px !important;
-    max-width: 247px!important;
+    max-width: none!important;
     padding: 20px 5px!important;
   }
   .totalprice_input {

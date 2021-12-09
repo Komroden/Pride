@@ -1,4 +1,4 @@
-import {OPEN_TIMER,SET_MINUTE,SET_PRICE,SET_SECONDS} from './actions'
+import {OPEN_TIMER, SET_MINUTE, SET_PRICE, SET_SECONDS} from './actions'
 const initialState = {
     showMessage: false,
     seconds:0,

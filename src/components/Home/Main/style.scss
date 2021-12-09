@@ -67,7 +67,7 @@
     position: relative;
     .booble_img{
       display: block;
-      content: url("../../images/first_img.png");
+      content: url("../../../images/first_img.png");
     }
     .bottom_text{
       font-size: 64px;
@@ -134,3 +134,10 @@
     text-transform: uppercase;
   }
 }
+.bag{
+  visibility: hidden;
+}
+.wow{
+  visibility: visible!important;
+}
+

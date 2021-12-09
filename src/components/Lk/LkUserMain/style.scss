@@ -1,8 +1,8 @@
 .userblockplus {
-  background-image: url('../../images/icon_bg_user.png');
+  background-image: url('../../../images/icon_bg_user.png');
   background-position: bottom left;
   background-repeat: no-repeat;
-  padding: 60px 40px 90px !important;
+  padding: 60px 40px 30px !important;
   display: block;
   &__botright {
     flex-basis: calc(100% - 370px);
@@ -51,6 +51,8 @@
     }
   }
   &__photolink {
+    display: flex;
+    flex-direction: column;
     margin-top: 15px;
     text-align: center;
     a {
@@ -158,8 +160,7 @@
   }
 }
 .home2link {
-  margin-top: 30px;
-  margin-bottom: 150px;
+  margin:0 0 30px;
   width: 100%;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -210,4 +211,7 @@
       }
     }
   }
+}
+.userBlock_sendMessage{
+  margin: 20px 0 0 0;
 }

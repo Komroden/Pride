@@ -19,6 +19,7 @@
   justify-content: space-between;
 }
 .invest_plan .invest_plan_item {
+  cursor: pointer;
   flex-basis: 25%;
   padding: 10px;
 }

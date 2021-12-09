@@ -1,12 +1,9 @@
-import {USER_DATA} from './actions'
-const initialState = {
-    value:{}
+import {CRYPTO_DATA} from './actions'
+const initialState = {value:[]}
 
-}
-
-export const userDataReducer = (state = initialState, action) => {
+export const cryptoDataReducer = (state = initialState, action) => {
     switch (action.type) {
-        case USER_DATA: {
+        case CRYPTO_DATA: {
             return {
                 ...state,
                 value:action.payload

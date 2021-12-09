@@ -1,18 +1,18 @@
 import React from 'react';
 import './style.scss';
-import {Main} from "../../components/Main";
-import {WhyMe} from "../../components/WhyMe";
-import {CryptoShop} from "../../components/CryptoShop";
-import {InvestPlan} from "../../components/InvestPlan";
-import {Calculator} from "../../components/Calculator";
-import {Registration} from "../../components/Registration";
-import {Statistic} from "../../components/Statistic";
-import {Contacts} from "../../components/Contacts";
-import {Footer} from "../../components/Footer";
-import {Header} from "../../components/Header";
-import {MenuRight} from "../../components/MenuRight";
-import {Timer} from "../../components/Timer";
-import {Message} from "../../components/Message";
+import {Main} from "../../components/Home/Main";
+import {WhyMe} from "../../components/Home/WhyMe";
+import {CryptoShop} from "../../components/Home/CryptoShop";
+import {InvestPlan} from "../../components/Home/InvestPlan";
+import {Calculator} from "../../components/Home/Calculator";
+import {Registration} from "../../components/Home/Registration";
+import {Statistic} from "../../components/Home/Statistic";
+import {Contacts} from "../../components/Home/Contacts";
+import {Footer} from "../../components/Home/Footer";
+import {Header} from "../../components/Home/Header";
+import {MenuRight} from "../../components/Home/MenuRight";
+import {Timer} from "../../components/Home/Timer";
+import {Message} from "../../components/Home/Message";
 
 
 

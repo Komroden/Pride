@@ -1,7 +1,8 @@
 import React, {useCallback} from 'react';
 import './style.scss'
 import {useDispatch, useSelector} from "react-redux";
-import {openTimer} from "../../store/timer/actions";
+import {openTimer} from "../../../store/timer/actions";
+
 
 
 export const Timer = () => {

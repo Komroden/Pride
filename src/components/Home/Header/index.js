@@ -1,20 +1,25 @@
 import React, {useState,useCallback} from 'react';
 import './style.scss';
-import {CSSTransition} from "react-transition-group";
+import Fade from '@mui/material/Fade';
 import {useDispatch, useSelector} from 'react-redux';
-import { openMenu } from "../../store/menu/actions";
+
 import {useHistory} from "react-router";
-import {HeaderLinkItem} from "../Home/HeaderLinkItem";
-import {UserLogout} from "../../store/auth/actions";
+import {UserLogout} from "../../../store/auth/actions";
+import {openMenu} from "../../../store/menu/actions";
+import {HeaderLinkItem} from "./HeaderLinkItem";
+
 
 
 export const Header = (props) => {
+
     const { userData,auth } = useSelector((state) => state);
     const {push}=useHistory()
-    const handlePushHome=() => {
+    const handlePushHome=(e) => {
+        e.preventDefault()
         push('/')
     }
-    const handlePushLk=() => {
+    const handlePushLk=(e) => {
+        e.preventDefault()
         push('/lk')
     }
     const dispatch = useDispatch();
@@ -26,12 +31,17 @@ export const Header = (props) => {
     }, [dispatch]);
     const [showName,setShowName]=useState(false);
     const [showLang,setShowLang]=useState(false);
-    const handleLogout =()=>{
-        setLogout()
+    const handleLogout =(e)=>{
+        e.preventDefault()
+        if(auth.token==null) return
         sessionStorage.clear()
+        setLogout()
+        setShowName(false)
     };
-    const handlePushLogin=()=>{
-        push('/login')
+    const handlePushLogin=(e)=>{
+        e.preventDefault()
+
+        push('/lk')
     }
     return (
 
@@ -39,8 +49,8 @@ export const Header = (props) => {
 
                 <div className="first_containerP">
                     <div className="header_left">
-                        <a onClick={handlePushHome} className="logo">
-                            <img className='logoImage' alt='pride'/>
+                        <a href={'/'} onClick={handlePushHome} className="logo">
+                            <img src='/images/logo.png' className='logoImage' alt='pride'/>
                         </a>
                         <div className="menu">
                             <nav className="navig_menu">
@@ -74,27 +84,27 @@ export const Header = (props) => {
                     <div className="header_right">
                         <div className="hello_open_row">
                             <div className="hello_open">
-                                <span className="hello_bas">Привет:</span>
-                                <div onClick={()=>setShowName(!showName)} className="open_name_info">
-                                    <div className="hello_name">{userData.value.Username?userData.value.Username:'User'}</div>
-                                    <div className="btn_open_name"/>
+                                {auth.token!==null&&<span className="hello_bas">Привет :</span>}
+                                <div onClick={() => auth.token!==null?setShowName(!showName):setShowName(false)} className="open_name_info">
+                                    <div className="hello_name" onClick={auth.token!==null?()=>{}:handlePushLogin}>{userData.value.Name?userData.value.Name:'ВХОД В КАБИНЕТ'}</div>
+                                    {auth.token!==null&&<div className="btn_open_name"/>}
                                 </div>
-                            </div>
-                            <CSSTransition in={showName} classNames='alert' timeout={300} unmountOnExit >
-                            <div className="name_row_open">
-                                <a onClick={handlePushLk}>В КАБИНЕТ</a>
-                                <a onClick={auth.token!=null?handleLogout:handlePushLogin}>{auth.token!=null?'Выход':'Вход'}</a>
-                            </div>
-                            </CSSTransition>
-                        </div>
+                                </div>
+                                    <Fade in={showName} >
+                                    <div className="name_row_open">
+                                    <a href={'/'} onClick={handlePushLk}>В КАБИНЕТ</a>
+                                    <a href={'/'} onClick={auth.token!==null?handleLogout:handlePushLogin}>{auth.token!==null?'Выход':'Вход'}</a>
+                                    </div>
+                                    </Fade>
+                                    </div>
                         <div className="languag">
                             <div onClick={()=>setShowLang(!showLang)} className="lang_btn btn_for_open_lang">RU</div>
-                            <CSSTransition in={showLang} classNames='alert' timeout={300} unmountOnExit >
+                            <Fade in={showLang} >
                             <div className="open_row_lang">
                                 <div className="lang_btn">ENG</div>
                                 <div className="lang_btn">GER</div>
                             </div>
-                            </CSSTransition>
+                            </Fade>
                         </div>
                         <div className="menu_right">
                             <div onClick={setName} className="menu_right_btn">

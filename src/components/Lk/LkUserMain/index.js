@@ -1,8 +1,46 @@
 import React from 'react';
 
 import './style.scss';
-import {LkUserInfoItem} from "../LkUserInfoItem";
+import {LkUserInfoItem} from "./LkUserInfoItem";
+import {useSelector} from "react-redux";
+import {ENDPOINT} from "../../../api/endpoints";
+
 export const LkUserMain = () => {
+    const { auth } = useSelector((state) => state);
+    const url = ENDPOINT
+    //id props
+    const handleBlockById=()=>{
+        let payload={
+            id:'3'
+        }
+        fetch(`${url}/api/auth/block-user`, {
+            method:'POST',
+            body:JSON.stringify(payload),
+            headers:{
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization':`Bearer ${auth.token}`}
+        })
+            .then(res=>res.json())
+            .then(res=>console.log(res))
+            .catch(e=>console.log(e))
+    }
+    const handleUnblockById=()=>{
+        let payload={
+            id:'3'
+        }
+        fetch(`${url}/api/auth/unblock-user`, {
+            method:'POST',
+            body:JSON.stringify(payload),
+            headers:{
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization':`Bearer ${auth.token}`}
+        })
+            .then(res=>res.json())
+            .then(res=>console.log(res))
+            .catch(e=>console.log(e))
+    }
     return (
         <>
 
@@ -18,7 +56,8 @@ export const LkUserMain = () => {
                                 <img src="/images/user.png" alt=""/>
                             </div>
                             <div className="userblockplus__photolink">
-                                <a href="#">Добавить в друзья</a>
+                                <a href="/">Добавить в друзья</a>
+                                <button className="form_sbmOpen userBlock_sendMessage" >Отправить сообщение</button>
                             </div>
                         </div>
                         <div className="userblockplus__detail">
@@ -55,7 +94,7 @@ export const LkUserMain = () => {
                                     <img src="/images/curator.png" alt=""/>
                                         <div className="user_main_block_last_bottom_text">
                                             <span>Куратор</span>
-                                            <a href="#">Волкова Анастасия</a>
+                                            <a href="/">Волкова Анастасия</a>
                                         </div>
                                 </div>
                             </div>
@@ -79,19 +118,12 @@ export const LkUserMain = () => {
                         <LkUserInfoItem title={'Youtube:'} text={'youtube.com/use..'} url={"/images/icon_yout.png"} href={"#"} classes={'userinfo_grey'}/>
                     </div>
                 </div>
-            </div>
-            <div className="home2link">
-                <div className="home2link__logo">
-                    <img src="/images/homelogo.png" alt=""/>
-                </div>
-                <div className="home2link__text">ваша реферальная ссылка:</div>
-                <div className="home2link__form">
-                    <input type="text" value="http://www.pride.io/ref_000001123"/>
-                        <button>
-                            <img src="/images/copyimg.png" alt=""/>
-                        </button>
+                <div className='crop_buttons'>
+                    <button onClick={handleUnblockById} className="form_sbmOpen" >Разблокировать</button>
+                    <button onClick={handleBlockById} className="form_sbmOpen form_sbmOpen_clear" >Заблокировать</button>
                 </div>
             </div>
+
             <div className="home2img">
                 <img src="/images/home2.png" alt=""/>
             </div>

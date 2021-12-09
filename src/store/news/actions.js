@@ -1,8 +1,8 @@
-export const VOTES = "VOTES_LIST::VOTES";
+export const NEWS = "NEWS_LIST::NEWS";
 
 
-export const Votes = (value) => ({
-    type: VOTES,
+export const setNewsList = (value) => ({
+    type: NEWS,
     payload: value
 
 

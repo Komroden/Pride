@@ -6,7 +6,7 @@ export const useCourse = (value) => {
     const[course,setCourse]=useState(null)
     useEffect(()=>{
         if(!cryptoData.value) return
-        cryptoData.value.filter(item=>item.symbol===value).map(item=>setCourse(item.price))
+        cryptoData.value.filter(item=>item.symbol===value).map(item=>setCourse(item.PriceUSD))
 
     },[value,cryptoData.value])
 

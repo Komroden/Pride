@@ -1,6 +1,6 @@
 .simple_page_standart {
   .contact_block {
-    background-image: url('../../images/bg_cont_page.png');
+    background-image: url('../../../images/bg_cont_page.png');
     background-position: top;
     padding-top: 100px;
   }
@@ -36,7 +36,7 @@
   }
   li {
     width: 210px;
-    a {
+    .countryTabs_link {
       cursor: pointer;
       min-height: 220px;
       display: block;
@@ -66,7 +66,7 @@
       }
     }
     &.active {
-      a {
+      .countryTabs_link {
         background: #c24190;
         &:before {
           color: #c24190;
@@ -124,7 +124,7 @@
     text-transform: uppercase;
     font-weight: 300;
     text-align: center;
-    background-image: url('../../images/logo_opacity.png');
+    background-image: url('../../../images/logo_opacity.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 190px;

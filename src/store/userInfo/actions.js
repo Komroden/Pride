@@ -1,8 +1,8 @@
-export const USER_INFO = "USER::USER_INFO";
+export const USER_DATA = "USER_INFO::USER_DATA";
 
 
-export const UserInfo = (value) => ({
-    type: USER_INFO,
+export const UserData = (value) => ({
+    type: USER_DATA,
     payload: value
 
 

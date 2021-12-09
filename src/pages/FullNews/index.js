@@ -1,13 +1,15 @@
 import React from 'react';
-import {Header} from "../../components/Header";
-import {HeaderSimpleAbout} from "../../components/HeaderSimpleAbout";
-import {Footer} from "../../components/Footer";
-import {ContFullNews} from "../../components/ContFullNews";
-import {MenuRight} from "../../components/MenuRight";
-import {Timer} from "../../components/Timer";
-import {Message} from "../../components/Message";
+import {Header} from "../../components/Home/Header";
+import {HeaderSimpleAbout} from "../../components/Home/Header/HeaderSimpleAbout";
+import {Footer} from "../../components/Home/Footer";
+import {ContFullNews} from "../../components/Home/ContFullNews";
+import {MenuRight} from "../../components/Home/MenuRight";
+import {Timer} from "../../components/Home/Timer";
+import {Message} from "../../components/Home/Message";
 
 export const FullNews = () => {
+    // let slug=useParams()
+
     return (
         <div className="simple_page_standart bodyHome">
             <Header/>

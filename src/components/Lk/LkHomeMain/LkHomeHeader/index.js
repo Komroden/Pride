@@ -2,10 +2,12 @@ import React, {useCallback} from 'react';
 import {LkHomeHeaderLinks} from "../LkHomeHeaderLinks";
 import './style.scss';
 
-import {LkHeaderUserProfile} from "../Lk/LkHeaderUserProfile";
-import {useDispatch, useSelector} from "react-redux";
 
-import {openLeftMenu} from "../../store/leftMenu/actions";
+import {useDispatch, useSelector} from "react-redux";
+import {openLeftMenu} from "../../../../store/leftMenu/actions";
+import {LkHeaderUserProfile} from "../../HeaderUserProfile";
+
+
 export const LkHomeHeader = ({title}) => {
 
     const dispatch = useDispatch();
@@ -30,7 +32,7 @@ export const LkHomeHeader = ({title}) => {
             <div className="main_content_header_right">
                 <div className="links_header">
                     <LkHomeHeaderLinks url='/images/l1.png' path={'/newMessage'} />
-                    <LkHomeHeaderLinks url='/images/l2.png'/>
+                    <LkHomeHeaderLinks url='/images/l2.png' path={'/notifications'}/>
                     <LkHomeHeaderLinks url='/images/l3.png' color='yeallow_col' />
                     <LkHomeHeaderLinks url='/images/l4.png' color='dark_col' path={'/guest'}/>
                 </div>

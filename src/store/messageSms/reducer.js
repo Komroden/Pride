@@ -1,47 +1,20 @@
-import {OPEN_TIMER, SET_MINUTE, SET_PRICE, SET_SECONDS} from './actions'
+import {OPEN_MESSAGE_SMS} from './actions'
 const initialState = {
-    showMessage: false,
-    seconds:0,
-    minute:0,
-    price:0
+    openMessage: false,
 
 
 }
 
-export const timerReducer = (state = initialState, action) => {
+export const messageReducer = (state = initialState, action) => {
+
     switch (action.type) {
-        case OPEN_TIMER: {
+        case OPEN_MESSAGE_SMS: {
             return {
                 ...state,
-                showMessage: !state.showMessage
+                openMessage: !state.openMessage
             }
 
         }
-        case SET_MINUTE: {
-            return {
-                ...state,
-                minute: action.payload
-            }
-
-        }
-
-        case SET_PRICE: {
-            return {
-                ...state,
-                price: action.payload
-            }
-
-        }
-        case SET_SECONDS: {
-            return {
-                ...state,
-                seconds: action.payload
-            }
-
-        }
-
-
-
 
         default:
             return state

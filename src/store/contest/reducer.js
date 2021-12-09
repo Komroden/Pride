@@ -1,14 +1,14 @@
-import {NEWS} from './actions'
+import {CONTESTS} from './actions'
 const initialState = {
     value:{
-        news:[]
+        contest:[]
     }
 
 }
 
-export const newsReducer = (state = initialState, action) => {
+export const contestsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case NEWS: {
+        case CONTESTS: {
             return {
                 ...state,
                 value:action.payload

@@ -1,157 +1,130 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './style.scss';
+import {ReviewItem} from "./ReviewItem";
+import {Pagination} from "./Pagination";
+import {ReviewForm} from "./ReviewForm";
 export const ContReview = () => {
+	const review=useState([
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith1'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith2'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith3'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith4'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith5'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith6'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith7'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith8'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith9'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith10'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+		<ReviewItem url={'url(images/logo_news.png)'}
+					login={'Adam Smith'}
+					desc={'This is Photoshop\'s version'}/>,
+	]);
+	const [currentPage,setCurrentPage]=useState(1);
+	const [itemOnPage]=useState(9);
+	const lastItemIndex = currentPage * itemOnPage
+	const firstItemIndex = lastItemIndex-itemOnPage
+	const currentItem = review.slice(firstItemIndex,lastItemIndex)
+
+	const paginate=pageNumber=> setCurrentPage(pageNumber);
+	const nextPage=()=> {
+		if(currentPage===3){
+			setCurrentPage(1)
+		}
+		setCurrentPage(prev => prev + 1)
+	};
+	const prevPage=()=> {
+		if(currentPage===1){
+			setCurrentPage(3)
+		}
+		setCurrentPage(prev => prev - 1)
+	};
     return (
         <div className="main_cont">
-            <div className="news_row containerP">
-                <div className="news_item_refer">
-					<span className="news_item_head">
-						<span className="news_item_head_left">
-							<span className="news_head_logo"
-                                  style={{backgroundImage: 'url(images/logo_news.png)'}}/>
-							</span>
-							<span className="news_item_head_right">
-								<span className="news_item_head_name">Adam Smith</span>
-								<span className="news_item_head_profes">
-									designer at
-									<a href="#">btcoins</a>
-								</span>
-							</span>
-					</span>
-                    <span className="news_item_descr">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor nisi elit </span>
-                </div>
-                <div className="news_item_refer">
-					<span className="news_item_head">
-						<span className="news_item_head_left">
-							<span className="news_head_logo"
-                                  style={{backgroundImage: 'url(images/logo_news.png)'}}/>
-							</span>
-							<span className="news_item_head_right">
-								<span className="news_item_head_name">Adam Smith</span>
-								<span className="news_item_head_profes">
-									designer at
-									<a href="#">btcoins</a>
-								</span>
-							</span>
-					</span>
-                    <span className="news_item_descr">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor nisi elit </span>
-                </div>
-                <div className="news_item_refer">
-					<span className="news_item_head">
-						<span className="news_item_head_left">
-							<span className="news_head_logo"
-                                  style={{backgroundImage: 'url(images/logo_news.png)'}}/>
-							</span>
-							<span className="news_item_head_right">
-								<span className="news_item_head_name">Adam Smith</span>
-								<span className="news_item_head_profes">
-									designer at
-									<a href="#">btcoins</a>
-								</span>
-							</span>
-					</span>
-                    <span className="news_item_descr">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor nisi elit </span>
-                </div>
-                <div className="news_item_refer">
-					<span className="news_item_head">
-						<span className="news_item_head_left">
-							<span className="news_head_logo"
-                                  style={{backgroundImage: 'url(images/logo_news.png)'}}/>
-							</span>
-							<span className="news_item_head_right">
-								<span className="news_item_head_name">Adam Smith</span>
-								<span className="news_item_head_profes">
-									designer at
-									<a href="#">btcoins</a>
-								</span>
-							</span>
-					</span>
-                    <span className="news_item_descr">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor nisi elit </span>
-                </div>
-                <div className="news_item_refer">
-					<span className="news_item_head">
-						<span className="news_item_head_left">
-							<span className="news_head_logo"
-                                  style={{backgroundImage: 'url(images/logo_news.png)'}}/>
-							</span>
-							<span className="news_item_head_right">
-								<span className="news_item_head_name">Adam Smith</span>
-								<span className="news_item_head_profes">
-									designer at
-									<a href="#">btcoins</a>
-								</span>
-							</span>
-					</span>
-                    <span className="news_item_descr">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor nisi elit </span>
-                </div>
-                <div className="news_item_refer">
-					<span className="news_item_head">
-						<span className="news_item_head_left">
-							<span className="news_head_logo"
-                                  style={{backgroundImage: 'url(images/logo_news.png)'}}/>
-							</span>
-							<span className="news_item_head_right">
-								<span className="news_item_head_name">Adam Smith</span>
-								<span className="news_item_head_profes">
-									designer at
-									<a href="#">btcoins</a>
-								</span>
-							</span>
-					</span>
-                    <span className="news_item_descr">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor nisi elit </span>
-                </div>
-                <div className="news_item_refer">
-					<span className="news_item_head">
-						<span className="news_item_head_left">
-							<span className="news_head_logo"
-                                  style={{backgroundImage: 'url(images/logo_news.png)'}}/>
-							</span>
-							<span className="news_item_head_right">
-								<span className="news_item_head_name">Adam Smith</span>
-								<span className="news_item_head_profes">
-									designer at
-									<a href="#">btcoins</a>
-								</span>
-							</span>
-					</span>
-                    <span className="news_item_descr">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor nisi elit </span>
-                </div>
-                <div className="news_item_refer">
-					<span className="news_item_head">
-						<span className="news_item_head_left">
-							<span className="news_head_logo"
-                                  style={{backgroundImage: 'url(images/logo_news.png)'}}/>
-							</span>
-							<span className="news_item_head_right">
-								<span className="news_item_head_name">Adam Smith</span>
-								<span className="news_item_head_profes">
-									designer at
-									<a href="#">btcoins</a>
-								</span>
-							</span>
-					</span>
-                    <span className="news_item_descr">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor nisi elit </span>
-                </div>
+            <div className="news_rowHome containerP">
+				{currentItem.map(item=>(
+					item
+					))}
             </div>
             <div className="pagination_p">
-                <div className="containerP">
-                    <a href="#" className="prev_pag ">
-                        <i className="fa fa-arrow-left" aria-hidden="true"/>
-                    </a>
-                    <a href="#" className="prev_pag ">
-                        1
-                    </a>
-                    <a href="#" className="prev_pag ">
-                        2
-                    </a>
-                    <a href="#" className="prev_pag ">
-                        3
-                    </a>
-                    <a href="#" className="prev_pag ">
-                        <i className="fa fa-arrow-right" aria-hidden="true"/>
-                    </a>
-                </div>
+				<ul className="containerP">
+					<li onClick={prevPage} className="prev_pag ">
+						<i className="fa fa-arrow-left" aria-hidden="true"/>
+					</li>
+				<Pagination itemsPerPage={itemOnPage} totalItems={27} paginate={paginate} className={"prev_pag "}/>
+					<li onClick={nextPage} className="prev_pag ">
+						<i className="fa fa-arrow-right" aria-hidden="true"/>
+					</li>
+				</ul>
             </div>
+			<ReviewForm/>
         </div>
     );
 };

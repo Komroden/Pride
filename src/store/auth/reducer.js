@@ -1,15 +1,21 @@
-import { LOGIN_USER } from './actions'
+import {LOGOUT_USER, REGIST_USER} from './actions'
 const initialState = {
-    isAuth: false
+    token:null
 
 }
 
-export const loginReducer = (state = initialState, action) => {
+export const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOGIN_USER: {
+        case REGIST_USER: {
             return {
                 ...state,
-                isAuth: !state.isAuth
+                token: action.payload
+            }
+        }
+        case LOGOUT_USER: {
+            return {
+                ...state,
+                token: null
             }
         }
         default:

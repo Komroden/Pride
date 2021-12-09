@@ -1,10 +1,36 @@
-import React,{useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './style.scss';
-import {Slider} from '@material-ui/core';
-import {CSSTransition} from "react-transition-group";
+import Collapse from '@mui/material/Collapse';
+import {CalcItem} from "./CalcItem";
+import {TypeValueItem} from "./TypeValueItem";
+import {useHistory} from "react-router";
+
 export const Calculator = () => {
+    const {push}=useHistory();
+    const handleInvest=()=>{
+        push('/programMaxi')
+    }
     const [showCurr,setShowCurr]=useState(false);
     const [showPlan,setShowPlan]=useState(false);
+    const [valueType,setValueType]= useState('');
+    const [value,setValue]= useState(0);
+    const [plan,setPlan]=useState({
+        name:'',
+        percent:null
+    });
+    const [minValue,setMinValue]=useState(0)
+    useEffect(()=>{
+        if(valueType===''||'BTC')setMinValue(0.1)
+        if(valueType==='ETH') setMinValue(1)
+        if(valueType==='ADA') setMinValue(100)
+    },[valueType])
+
+    useEffect(()=>{
+        if(value>minValue*10){
+            setValue(minValue*10)
+        }
+    },[value,minValue])
+
 
 
     return (
@@ -18,7 +44,7 @@ export const Calculator = () => {
                     актуальные по соотношению сроков\процентов <br/>оптимальные пакетные платы для ваших дипозитных
                         вкладов. Тут вобщем <br/>текст для сео можно вставить.</div>
                 <div className="cripto_table wow bounceInUp" data-wow-duration="2s">
-                    <div className="bottom_bg wow pulse" data-wow-duration="4s" data-wow-iteration="infinite"></div>
+                    <div className="bottom_bg wow pulse" data-wow-duration="4s" data-wow-iteration="infinite"/>
                     <div className="table_cripto">
 
                         <form>
@@ -27,83 +53,57 @@ export const Calculator = () => {
                                     <div className="select_title">Выберите план</div>
                                     <div className="select_item_calc">
                                         <div onClick={()=>setShowPlan(!showPlan)} className="select_item_calc_name ope1">
-                                            Тарифный план БИЗНЕС
+                                            {plan.name===''?'Выберете план':plan.name}
                                         </div>
-                                        <CSSTransition in={showPlan} classNames='alert' timeout={300} unmountOnExit >
+                                        <Collapse in={showPlan}  unmountOnExit >
                                         <div
                                             className="open_select_categ select_item_calc_body select_item_calc_body1 inputp">
-												<span className="sel_r">
-													<input type="radio" name="categ" id="categ1"/>
-													<label htmlFor="categ1">Тарифный план Старт</label>
-												</span>
-                                            <span className="sel_r">
-													<input type="radio" name="categ" id="categ2"/>
-													<label htmlFor="categ2">Тарифный план Выгодный</label>
-												</span>
-                                            <span className="sel_r">
-													<input type="radio" name="categ" id="categ3"/>
-													<label htmlFor="categ3">Тарифный план БИЗНЕС</label>
-												</span>
+                                            <TypeValueItem openState={setShowPlan} type={'Тарифный план Старт'} id={'categ1'} setValueType={setPlan} percent={5}/>
+                                            <TypeValueItem openState={setShowPlan} type={'Тарифный план Выгодный'} id={'categ2'} setValueType={setPlan} percent={10}/>
+                                            <TypeValueItem openState={setShowPlan} type={'Тарифный план БИЗНЕС'} id={'categ3'} setValueType={setPlan} percent={15}/>
                                         </div>
-                                        </CSSTransition>
+                                        </Collapse>
                                     </div>
                                 </div>
                                 <div className="select3 sel_money">
                                     <div className="select_title ">Выберите валюту</div>
                                     <div className="select_item_calc">
                                         <div onClick={()=>setShowCurr(!showCurr)} className="select_item_calc_name ope2">
-                                            Выберите валюту
+                                            {valueType===''?'Выберете валюту':valueType}
                                         </div>
-                                        <CSSTransition in={showCurr} classNames='alert' timeout={300} unmountOnExit >
+                                        <Collapse in={showCurr}  unmountOnExit >
                                         <div
                                             className="open_select_categ select_item_calc_body select_item_calc_body2 inputp">
-												<span className="sel_r">
-													<input type="radio" name="categ3" id="mon1"/>
-													<label htmlFor="mon1">Выберите валюту</label>
-												</span>
-                                            <span className="sel_r">
-													<input type="radio" name="categ3" id="mon2"/>
-													<label htmlFor="mon2">Долар США</label>
-												</span>
-                                            <span className="sel_r">
-													<input type="radio" name="categ3" id="mon3"/>
-													<label htmlFor="mon3">Рубль Россия</label>
-												</span>
+                                            <TypeValueItem openState={setShowCurr} type={'BTC'} id={'mon1'} setValueType={setValueType}/>
+                                            <TypeValueItem openState={setShowCurr} type={'ETH'} id={'mon2'} setValueType={setValueType}/>
+                                            <TypeValueItem openState={setShowCurr} type={'ADA'} id={'mon3'} setValueType={setValueType}/>
                                         </div>
-                                        </CSSTransition>
+                                        </Collapse>
                                     </div>
                                 </div>
                                 <div className="select3 sel_price">
                                     <div className="select_title">Введите сумму</div>
-                                    <input placeholder="15" type="number" className="number_input"/>
+                                    <input disabled={valueType===''&&plan.name===''} onChange={e => setValue(e.target.value)} value={value} placeholder={"1 "+valueType} type="number" className="number_input" step={0.01}/>
                                 </div>
                             </div>
-                            <div className="flex_row take_money">
-                                <div className="take_money_left">
-                                    <div className="take_money_tit">Ежедневный доход:</div>
-                                    <div className="take_money_sum fiolet_t">0.026400 BTC</div>
-                                </div>
-                                <div className="take_money_right">
-                                    <div className="take_money_tit">Общий доход:</div>
-                                    <div className="take_money_sum green_t">1.320000 BTC</div>
-                                </div>
-
-                            </div>
+                            <CalcItem type={valueType}  mountProfit={value*(plan.percent+100)/100}/>
                             <div className="flex_row range_btn">
                                 <div className="range_calc">
                                     <div className="slider">
 
                                         <div className="range">
-                                            <Slider size="medium"  defaultValue={50} aria-label="Temperature" valueLabelDisplay="auto" min={1} max={200} step={1}  />
+                                            <input disabled={valueType===''&&plan.name===''} onChange={e => setValue(e.target.value)} type="range" name="date" id="date1" min="0.1" max="10" step="0.01"
+                                                    defaultValue={0} required/>
+                                            <span className="setyear">{value +' '+ valueType}</span>
                                         </div>
                                         <div className="under">
-                                            <span className="startyear">1 BTC</span>
-                                            <span className="endyear">200 BTC</span>
+                                            <span className="startyear">{minValue +' '+  valueType}</span>
+                                            <span className="endyear">{minValue*10 +' '+  valueType}</span>
                                         </div>
 
                                     </div>
                                 </div>
-                                <button className="invest_btn">Инвестировать</button>
+                                <button onClick={handleInvest} className="invest_btn">Инвестировать</button>
                             </div>
                         </form>
 

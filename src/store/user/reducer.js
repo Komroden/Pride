@@ -1,17 +1,18 @@
-import { REGIST_USER } from './actions'
+import { USER_INFO  } from './actions'
 const initialState = {
-    token:null
+    value:{}
 
 }
 
-export const userReducer = (state = initialState, action) => {
+export const userInfoReducer = (state = initialState, action) => {
     switch (action.type) {
-        case REGIST_USER: {
+        case USER_INFO: {
             return {
                 ...state,
-                token: action.payload
+                value:action.payload
             }
         }
+
         default:
             return state
     }

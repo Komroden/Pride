@@ -1,24 +1,56 @@
 import React, {useCallback, useState,useEffect} from 'react';
 import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import {UserRegistration} from "../../store/auth/actions";
-import {FormRegist} from "../Home/FormRegist";
+import {UserRegistration} from "../../../store/auth/actions";
+import {FormRegist} from "./FormRegist";
+import Fade from '@mui/material/Fade';
+import './style.scss';
+
+import {SmsVerify} from "./SmsVerify";
+import {Loader} from "../../../api/Loader";
+import {Captcha} from "../ContReview/Captcha";
 
 
+
+const saveJSON = (key,data)=>
+    sessionStorage.setItem(key,JSON.stringify(data));
 export const ContRegister = () => {
+    //captcha
+    const [visible, setVisible] = useState(false);
+    const [success,setSuccess]=useState(true);
+    const [counter,setCounter]=useState(0)
+    const openCaptcha = () => {
+        setVisible(!visible);
+    };
     const { userInfo } = useSelector((state) => state);
+    const {push}=useHistory()
+    const handlePushLogin=(e) => {
+        e.preventDefault()
+        push('/login')
+    }
     const[token,setToken]=useState(null);
+    const[error,setError]=useState();
+    const[loading,setLoading]=useState(false);
+    const[open,setOpen]=useState(false)
     const dispatch = useDispatch();
     const setTokens = useCallback(() => {
         dispatch(UserRegistration(token))
     }, [dispatch,token]);
 
+
+
+
     useEffect(() => {
         setTokens()
-        },[token])
+        saveJSON('key',token)
+    },[setTokens,token])
 
+
+const handleOpen=()=>{
+        setOpen(!open)
+}
 const handlePost=(e)=> {
-        let cleanup = false
+
 e.preventDefault()
     const payload= {
         email:userInfo.value.email,
@@ -30,49 +62,73 @@ e.preventDefault()
         second_name:userInfo.value.second_name,
         username:userInfo.value.username
     }
-
-    console.log(JSON.stringify(payload))
+    setLoading(true)
+    setCounter(counter+1)
+    if(success){
     fetch('http://127.0.0.1:8000/api/auth/register',{
         method:'POST',
         body:JSON.stringify(payload),
         headers: {'Content-Type': 'application/json'}
     })
-        .then(function(response) {
-            return response.json()
+        .then((res) => {
+            if (res.status >= 200 && res.status < 300) {
+                return res.json();
+            } else {
+                let error = new Error(res.statusText);
+                error.response = res;
+                if(counter>=2){
+                    setSuccess(false)
+                    openCaptcha()
+                }
+                throw error
+            }
         })
         .then(function(body) {
         setToken(body.token);
-    })
-        .then(()=>{
-            push('/')
-        })
-        .catch(()=>{
-            console.error()
 
-    });
-    return ()=>cleanup=true
+    })
+        .then(()=> setLoading(false))
+        .then(()=> setOpen(true))
+        .catch((e) => {
+            setLoading(false)
+            setError(e.message);
+
+        });
+    }
+
 }
 
-    const {push}=useHistory()
-    const handlePushLogin=() => {
-        push('/login')
-    }
+
     return (
-        <div className="firstbl first_login">
+        <div  className="firstbl first_login">
             <div className="first_containerP">
                 <div className="text_bg wow slideInLeft" data-wow-duration="3s">company see <br/><span>Pride.</span>
                 </div>
                 <div className="first_left wow slideInUp" data-wow-duration="3s">
                     <div className="log_block">
-                        <img src="/images/logo_dark.png" alt="" className="img"/>
-                            <div className="log_title">Регистрация в Pride</div>
+                        <img onClick={handleOpen}  src="/images/logo_dark.png" alt="" className="img"/>
+                            <div className="log_title">{open?'Введите код':'Регистрация в Pride'}</div>
                             <div className="log_form">
+
                                 <form onSubmit={handlePost}>
-  								<FormRegist/>
+                                    <Loader loading={loading}/>
+                                        <FormRegist status={!open}/>
+                                    <Fade  in={open}  unmountOnExit>
+                                        <div>
+                                        <SmsVerify />
+                                        </div>
+                                    </Fade>
+                                    <Fade  in={visible}>
+                                        <div>
+                                            <Captcha setSuccess={setSuccess} setVisible={setVisible} visible={visible}/>
+                                        </div>
+                                    </Fade>
+
                                 </form>
                             </div>
-                            <div className="registr reemb_pasw">У меня есть аккаунт! <a onClick={handlePushLogin}>Вход в кабинет</a>
+                            <div className="registr reemb_pasw" style={{display:open?'none':'block'}}>У меня есть аккаунт! <a href='/' onClick={handlePushLogin}>Вход в кабинет</a>
                             </div>
+                        <pre>{JSON.stringify(error, null, 2)}</pre>
                     </div>
                 </div>
                 <div className="first_right">

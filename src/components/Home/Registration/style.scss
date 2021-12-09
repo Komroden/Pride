@@ -1,5 +1,6 @@
 .register_click {
   margin-bottom: 150px;
+  padding: 0 10px;
   position: relative;
   z-index: 1;
   .containerP {
@@ -39,7 +40,7 @@
     display: flex;
     justify-content: space-between;
     .count_step span {
-      background-image: url('../../images/bg_number.png');
+      background-image: url('../../../images/bg_number.png');
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
@@ -76,7 +77,7 @@
 }
 .video_blog {
   margin-bottom: 105px;
-  background-image: url('../../images/bg_video.png');
+  background-image: url('../../../images/bg_video.png');
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -155,7 +156,7 @@
   z-index: 1;
 }
 .dflex_news {
-  background-image: url('../../images/newsleter.png');
+  background-image: url('../../../images/newsleter.png');
   background-repeat: no-repeat;
   background-size: inherit;
   background-position: 43% center;
@@ -299,7 +300,7 @@
   }
 }
 .bg_big {
-  background-image: url('../../images/bg_big.png');
+  background-image: url('../../../images/bg_big.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -451,7 +452,7 @@
       align-items: center;
       width: 70px;
       height: 75px;
-      background-image: url('../../images/plate.png');
+      background-image: url('../../../images/plate.png');
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;

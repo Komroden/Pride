@@ -1,11 +1,11 @@
 import React from 'react';
-import {Header} from "../../components/Header";
-import {HeaderSimpleFaq} from "../../components/HeaderSimpleFaq";
-import {ContFaq} from "../../components/ContFaq";
-import {Footer} from "../../components/Footer";
-import {MenuRight} from "../../components/MenuRight";
-import {Timer} from "../../components/Timer";
-import {Message} from "../../components/Message";
+import {Header} from "../../components/Home/Header";
+import {HeaderSimpleFaq} from "../../components/Home/Header/HeaderSimpleFaq";
+import {ContFaq} from "../../components/Home/ContFaq";
+import {Footer} from "../../components/Home/Footer";
+import {MenuRight} from "../../components/Home/MenuRight";
+import {Timer} from "../../components/Home/Timer";
+import {Message} from "../../components/Home/Message";
 
 
 export const Faq = () => {

@@ -1,8 +1,8 @@
-export const USER_DATA = "USER_INFO::USER_DATA";
+export const VOTES = "VOTES_LIST::VOTES";
 
 
-export const UserData = (value) => ({
-    type: USER_DATA,
+export const Votes = (value) => ({
+    type: VOTES,
     payload: value
 
 
